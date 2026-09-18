@@ -11,39 +11,40 @@
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 body { font-family: 'Poppins', Arial, sans-serif; background: #fafafa; color: #101828; min-height: 100vh; display: flex; flex-direction: column; }
 
-/* HEADER */
 .header { background: #fff; border-bottom: 1px solid #e8edf3; padding: 16px 28px 0; position: sticky; top: 0; z-index: 200; box-shadow: 0 1px 3px rgba(16,24,40,.06); }
 .header-top { display: flex; align-items: center; justify-content: space-between; padding-bottom: 12px; }
 .logo { font-size: 20px; font-weight: 800; color: #101828; letter-spacing: -0.5px; }
 .logo span { color: #188BF6; }
 .header-sub { font-size: 11px; color: #414142; margin-top: 2px; }
+.sync-badge { font-size: 10px; font-weight: 600; padding: 3px 10px; border-radius: 99px; background: #e6f2fe; color: #188BF6; }
+.sync-badge.syncing { background: #fff8e6; color: #b8860b; }
+.sync-badge.error { background: #fbeae6; color: #c4472e; }
+
 .tab-bar { display: flex; }
 .tab-btn { padding: 10px 20px; font-family: 'Poppins', Arial, sans-serif; font-size: 12px; font-weight: 600; color: #414142; background: none; border: none; border-bottom: 3px solid transparent; cursor: pointer; transition: color .15s, border-color .15s; white-space: nowrap; }
 .tab-btn:hover { color: #101828; }
 .tab-btn.active { color: #188BF6; border-bottom-color: #188BF6; }
 
-/* TAB PANELS */
 .tab-panel { display: none; flex: 1; flex-direction: column; }
 .tab-panel.active { display: flex; }
 .tab-scroll { overflow-y: auto; flex: 1; height: calc(100vh - 97px); }
 
-/* SHARED PANEL STYLES */
 .panel { background: #fff; border: 1px solid #e8edf3; border-radius: 12px; padding: 20px 22px; box-shadow: 0 1px 2px rgba(16,24,40,.05), 0 8px 24px -12px rgba(16,24,40,.12); margin-bottom: 16px; }
 .grad-line { width: 64px; height: 3px; border-radius: 2px; background: linear-gradient(90deg,#B145E4,#188BF6); margin: 12px 0 24px; }
 .page-wrap { max-width: 960px; margin: 0 auto; padding: 36px 24px 80px; width: 100%; }
 .eyebrow { font-weight: 700; font-size: 0.72rem; letter-spacing: 0.14em; text-transform: uppercase; color: #188BF6; }
 .page-rule { border: none; border-top: 1px solid #e8edf3; margin: 10px 0 20px; }
 .page-title { font-weight: 800; font-size: 1.9rem; letter-spacing: -0.01em; color: #101828; margin: 0 0 6px; }
-.page-lede { color: #414142; font-size: 0.94rem; margin: 0 0 0; }
+.page-lede { color: #414142; font-size: 0.94rem; margin: 0; }
 .panel h2 { font-weight: 600; font-size: 1rem; color: #188BF6; margin: 0 0 3px; }
 .panel .sub { color: #414142; font-size: 0.8rem; margin: 0 0 14px; }
 .panel-head { display: flex; align-items: baseline; justify-content: space-between; gap: 10px; margin-bottom: 3px; }
 .count { font-size: 0.76rem; color: #414142; white-space: nowrap; }
+.empty-note { color: #CBD5E0; font-size: 0.85rem; padding: 6px 0; font-style: italic; }
 
-/* ── DOCKET TAB ── */
+/* DOCKET */
 .docket-wrap { max-width: 600px; margin: 0 auto; padding: 40px 24px 80px; width: 100%; }
 .docket-wrap h2 { font-size: 22px; font-weight: 800; color: #101828; margin-bottom: 4px; }
-.docket-wrap p { font-size: 13px; color: #414142; margin-bottom: 0; }
 .docket-card { background: #fff; border: 1px solid #e8edf3; border-radius: 14px; padding: 24px; box-shadow: 0 1px 2px rgba(16,24,40,.05), 0 8px 24px -12px rgba(16,24,40,.12); }
 .d-field { display: flex; flex-direction: column; gap: 5px; margin-bottom: 14px; }
 .d-field label { font-size: 10px; font-weight: 700; color: #414142; text-transform: uppercase; letter-spacing: .07em; }
@@ -59,7 +60,7 @@ body { font-family: 'Poppins', Arial, sans-serif; background: #fafafa; color: #1
 .added-flash { text-align: center; font-size: 12px; color: #188BF6; font-weight: 600; margin-top: 10px; opacity: 0; transition: opacity .3s; }
 .added-flash.show { opacity: 1; }
 
-/* ── SEPTEMBER PLAN TAB ── */
+/* SEP PLAN */
 .sep-overall { background: #fff; border: 1px solid #e8edf3; border-radius: 12px; padding: 16px 20px; margin-bottom: 18px; box-shadow: 0 1px 2px rgba(16,24,40,.05), 0 8px 24px -12px rgba(16,24,40,.12); display: flex; align-items: center; justify-content: space-between; gap: 16px; flex-wrap: wrap; }
 .sep-overall-label { font-size: 12px; font-weight: 600; color: #101828; }
 .sep-overall-right { display: flex; align-items: center; gap: 12px; flex-wrap: wrap; }
@@ -68,7 +69,6 @@ body { font-family: 'Poppins', Arial, sans-serif; background: #fafafa; color: #1
 .overall-bar-bg { background: #e8edf3; border-radius: 99px; height: 8px; overflow: hidden; width: 180px; }
 .overall-bar-fill { height: 8px; border-radius: 99px; background: linear-gradient(90deg,#B145E4,#188BF6); transition: width .4s ease; width: 0%; }
 
-/* Sep task rows */
 .sep-task-list { display: flex; flex-direction: column; }
 .sep-task-row { display: grid; grid-template-columns: 22px 1fr; gap: 12px; padding: 10px 0; border-top: 1px solid #e8edf3; cursor: pointer; }
 .sep-task-row:first-child { border-top: none; padding-top: 2px; }
@@ -82,9 +82,7 @@ body { font-family: 'Poppins', Arial, sans-serif; background: #fafafa; color: #1
 .sep-flag.urgent { background: #fbeae6; color: #c4472e; }
 .sep-flag.progress { background: #e6f2fe; color: #188BF6; }
 .sep-flag.new-rev { background: #f3e5fa; color: #8c2db5; }
-.empty-note { color: #CBD5E0; font-size: 0.85rem; padding: 6px 0; font-style: italic; }
 
-/* Docket tasks in sep plan */
 .docket-task-card { display: grid; grid-template-columns: 22px 1fr auto; gap: 12px; padding: 10px 0; border-top: 1px solid #e8edf3; cursor: pointer; align-items: start; }
 .docket-task-card:first-child { border-top: none; padding-top: 2px; }
 .docket-task-card input[type=checkbox] { appearance: none; width: 20px; height: 20px; border-radius: 6px; border: 1.5px solid #e8edf3; background: #f3f8fb; cursor: pointer; position: relative; margin-top: 1px; flex: none; }
@@ -101,12 +99,11 @@ body { font-family: 'Poppins', Arial, sans-serif; background: #fafafa; color: #1
 .dtask-priority.medium { background: #f3f8fb; color: #414142; border: 1px solid #CBD5E0; }
 .dtask-priority.low    { background: #fafafa; color: #CBD5E0; border: 1px solid #e8edf3; }
 
-/* ── WIN TRACKER TAB ── */
+/* WIN TRACKER */
 .month-selector-bar { display: flex; align-items: center; gap: 14px; margin-bottom: 22px; flex-wrap: wrap; }
 .month-selector-bar label { font-size: 11px; font-weight: 600; color: #414142; text-transform: uppercase; letter-spacing: .06em; }
 .month-selector-bar select { font-family: 'Poppins', Arial, sans-serif; font-size: 13px; font-weight: 600; color: #101828; background: #fff; border: 1px solid #e8edf3; border-radius: 8px; padding: 8px 12px; outline: none; cursor: pointer; }
 .month-selector-bar select:focus { border-color: #188BF6; }
-
 .wt-tiles { display: grid; grid-template-columns: repeat(4,1fr); gap: 12px; margin-bottom: 20px; }
 .wt-tile { background: #fff; border: 1px solid #e8edf3; border-radius: 10px; padding: 16px 18px; box-shadow: 0 1px 2px rgba(16,24,40,.05), 0 8px 24px -12px rgba(16,24,40,.16); }
 .wt-tile .wt-label { font-size: 0.7rem; font-weight: 500; text-transform: uppercase; letter-spacing: 0.07em; color: #414142; margin-bottom: 8px; }
@@ -115,11 +112,9 @@ body { font-family: 'Poppins', Arial, sans-serif; background: #fafafa; color: #1
 .wt-tile.accent .wt-value { color: #188BF6; }
 .wt-tile .target-input { font: inherit; font-weight: 800; font-size: 1.3rem; color: #8c2db5; background: transparent; border: none; border-bottom: 1px dashed #e8edf3; width: 7ch; padding: 0 0 1px; font-variant-numeric: tabular-nums; outline: none; }
 .wt-tile .target-input:focus { border-bottom-color: #188BF6; }
-
 .month-progress-bar { background: #e8edf3; border-radius: 99px; height: 8px; overflow: hidden; margin-bottom: 8px; }
 .month-progress-fill { height: 8px; border-radius: 99px; background: linear-gradient(90deg,#B145E4,#188BF6); transition: width .4s ease; }
 .month-insight { font-size: 0.82rem; color: #414142; background: #e6f2fe; border-radius: 8px; padding: 10px 14px; margin-bottom: 20px; }
-
 .wt-grid-2 { display: grid; grid-template-columns: 1.2fr 0.8fr; gap: 16px; margin-bottom: 16px; }
 .wt-bar-row { display: grid; grid-template-columns: 130px 1fr auto; align-items: center; gap: 10px; padding: 8px 0; border-top: 1px solid #e8edf3; }
 .wt-bar-row:first-of-type { border-top: none; }
@@ -130,7 +125,6 @@ body { font-family: 'Poppins', Arial, sans-serif; background: #fafafa; color: #1
 .wt-chips { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 14px; padding-top: 14px; border-top: 1px solid #e8edf3; }
 .wt-chip { background: #e6f2fe; border-radius: 999px; padding: 5px 12px; font-size: 0.78rem; color: #188BF6; }
 .wt-chip b { color: #101828; font-variant-numeric: tabular-nums; }
-
 form.wt-add { display: flex; flex-direction: column; gap: 12px; }
 .wt-field label { display: block; font-size: 0.7rem; font-weight: 500; text-transform: uppercase; letter-spacing: 0.06em; color: #414142; margin-bottom: 5px; }
 .wt-field input { width: 100%; font: inherit; font-size: 0.9rem; padding: 8px 10px; border: 1px solid #e8edf3; border-radius: 7px; background: #f3f8fb; color: #101828; outline: none; }
@@ -141,7 +135,6 @@ button.wt-submit:hover { filter: brightness(1.08); }
 .wt-form-msg { font-size: 0.8rem; min-height: 1em; }
 .wt-form-msg.ok { color: #188BF6; }
 .wt-form-msg.err { color: #c4472e; }
-
 .wt-table-scroll { overflow-x: auto; border: 1px solid #e8edf3; border-radius: 12px; background: #fff; box-shadow: 0 1px 2px rgba(16,24,40,.05), 0 8px 24px -12px rgba(16,24,40,.16); }
 table.wt-log { width: 100%; border-collapse: collapse; }
 table.wt-log th, table.wt-log td { text-align: left; padding: 11px 14px; font-size: 0.86rem; border-bottom: 1px solid #e8edf3; white-space: nowrap; }
@@ -157,37 +150,38 @@ table.wt-log td.td-date { color: #414142; font-size: 0.8rem; }
 .del-btn.confirm { border-color: #c4472e; color: #fff; background: #c4472e; font-size: 0.68rem; width: auto; padding: 0 8px; }
 .tbl-empty { text-align: center; color: #414142; padding: 28px 14px !important; white-space: normal !important; }
 
-/* ── SOURCE REPORT TAB ── */
+/* SOURCE REPORT */
 .source-tiles { display: grid; grid-template-columns: repeat(3,1fr); gap: 12px; margin-bottom: 20px; }
 .chart-wrap { background: #fff; border: 1px solid #e8edf3; border-radius: 12px; padding: 20px 22px; box-shadow: 0 1px 2px rgba(16,24,40,.05), 0 8px 24px -12px rgba(16,24,40,.12); margin-bottom: 16px; }
 .chart-wrap h2 { font-weight: 600; font-size: 1rem; color: #188BF6; margin: 0 0 4px; }
 .chart-wrap .sub { color: #414142; font-size: 0.8rem; margin: 0 0 18px; }
 .bar-chart { display: flex; flex-direction: column; gap: 10px; }
-.bc-row { display: grid; grid-template-columns: 140px 1fr 80px; align-items: center; gap: 10px; }
+.bc-row { display: grid; grid-template-columns: 140px 1fr 90px; align-items: center; gap: 10px; }
 .bc-label { font-size: 0.82rem; font-weight: 500; color: #101828; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
 .bc-track { background: #f3f8fb; border-radius: 6px; height: 10px; overflow: hidden; }
 .bc-fill { height: 10px; border-radius: 6px; background: linear-gradient(90deg,#B145E4,#188BF6); transition: width .5s ease; }
 .bc-val { font-size: 0.8rem; color: #414142; text-align: right; font-variant-numeric: tabular-nums; }
 
 footer.pg-note { margin-top: 18px; color: #414142; font-size: 0.78rem; text-align: center; }
+.loading-overlay { text-align: center; padding: 60px 24px; color: #414142; font-size: 13px; }
 
 @media (max-width: 760px) {
   .wt-tiles, .source-tiles { grid-template-columns: repeat(2,1fr); }
   .wt-grid-2 { grid-template-columns: 1fr; }
   .wt-field-row { grid-template-columns: 1fr; }
-  .bc-row { grid-template-columns: 100px 1fr 60px; }
+  .bc-row { grid-template-columns: 90px 1fr 60px; }
 }
 </style>
 </head>
 <body>
 
-<!-- HEADER -->
 <div class="header">
   <div class="header-top">
     <div>
       <div class="logo">hopeitsticks<span>.</span></div>
       <div class="header-sub">Martin Walker &nbsp;·&nbsp; HQ</div>
     </div>
+    <span class="sync-badge" id="sync-badge">Connecting…</span>
   </div>
   <div class="tab-bar">
     <button class="tab-btn active" onclick="switchTab('docket')">Docket</button>
@@ -197,13 +191,13 @@ footer.pg-note { margin-top: 18px; color: #414142; font-size: 0.78rem; text-alig
   </div>
 </div>
 
-<!-- DOCKET TAB -->
+<!-- DOCKET -->
 <div class="tab-panel active" id="tab-docket">
   <div class="tab-scroll">
   <div class="docket-wrap">
     <h2>Docket</h2>
     <div class="grad-line"></div>
-    <p style="margin-bottom:24px;">Add a task here and it appears in your <strong>September Plan</strong> under Additional To-Dos.</p>
+    <p style="margin-bottom:24px;font-size:13px;color:#414142;">Add a task here and it appears in your <strong>September Plan</strong> under Additional To-Dos. Shared with everyone who has access.</p>
     <div class="docket-card">
       <div class="d-field"><label>Task</label><textarea class="task-input" id="d-task" placeholder="What needs doing?"></textarea></div>
       <div class="d-field"><label>Detail</label><textarea class="detail-input" id="d-detail" placeholder="Any context or notes..."></textarea></div>
@@ -218,7 +212,7 @@ footer.pg-note { margin-top: 18px; color: #414142; font-size: 0.78rem; text-alig
   </div>
 </div>
 
-<!-- SEPTEMBER PLAN TAB -->
+<!-- SEPTEMBER PLAN -->
 <div class="tab-panel" id="tab-sep">
   <div class="tab-scroll">
   <div class="page-wrap">
@@ -230,8 +224,6 @@ footer.pg-note { margin-top: 18px; color: #414142; font-size: 0.78rem; text-alig
     <h1 class="page-title">September Plan</h1>
     <p class="page-lede">Tick things off as you go. Done tasks move to the bottom.</p>
     <div class="grad-line"></div>
-
-    <!-- Overall progress -->
     <div class="sep-overall">
       <span class="sep-overall-label">Overall progress</span>
       <div class="sep-overall-right">
@@ -239,38 +231,17 @@ footer.pg-note { margin-top: 18px; color: #414142; font-size: 0.78rem; text-alig
         <div class="overall-bar-bg"><div class="overall-bar-fill" id="overall-bar-fill"></div></div>
       </div>
     </div>
-
-    <div class="panel">
-      <div class="panel-head"><h2>Existing clients — care &amp; launch</h2><span class="count" id="count-clients"></span></div>
-      <p class="sub">All three are already paying. The job this month is delivery, not selling.</p>
-      <div class="sep-task-list" id="list-clients"></div>
-    </div>
-    <div class="panel">
-      <div class="panel-head"><h2>Previous clients — check in</h2><span class="count" id="count-previous"></span></div>
-      <p class="sub">Reconnect with each one — see how they're getting on and whether there's more to do.</p>
-      <div class="sep-task-list" id="list-previous"></div>
-    </div>
-    <div class="panel">
-      <div class="panel-head"><h2>BNI &amp; lead-gen pipeline</h2><span class="count" id="count-bni"></span></div>
-      <p class="sub">Trades are the fastest-closing niche for the AI Receptionist pitch.</p>
-      <div class="sep-task-list" id="list-bni"></div>
-    </div>
-    <div class="panel">
-      <div class="panel-head"><h2>Webinar &amp; expo prep</h2><span class="count" id="count-expo"></span></div>
-      <p class="sub">The webinar recording is the one blocking everything else — do it first.</p>
-      <div class="sep-task-list" id="list-expo"></div>
-    </div>
-    <div class="panel" id="additional-panel">
-      <div class="panel-head"><h2>Additional To-Dos</h2><span class="count" id="count-additional"></span></div>
-      <p class="sub">Tasks added via Docket appear here.</p>
-      <div class="sep-task-list" id="list-additional"></div>
-    </div>
-    <footer class="pg-note">Ticks saved in this browser</footer>
+    <div class="panel"><div class="panel-head"><h2>Existing clients — care &amp; launch</h2><span class="count" id="count-clients"></span></div><p class="sub">All three are already paying. The job this month is delivery, not selling.</p><div class="sep-task-list" id="list-clients"></div></div>
+    <div class="panel"><div class="panel-head"><h2>Previous clients — check in</h2><span class="count" id="count-previous"></span></div><p class="sub">Reconnect with each one — see how they're getting on and whether there's more to do.</p><div class="sep-task-list" id="list-previous"></div></div>
+    <div class="panel"><div class="panel-head"><h2>BNI &amp; lead-gen pipeline</h2><span class="count" id="count-bni"></span></div><p class="sub">Trades are the fastest-closing niche for the AI Receptionist pitch.</p><div class="sep-task-list" id="list-bni"></div></div>
+    <div class="panel"><div class="panel-head"><h2>Webinar &amp; expo prep</h2><span class="count" id="count-expo"></span></div><p class="sub">The webinar recording is the one blocking everything else — do it first.</p><div class="sep-task-list" id="list-expo"></div></div>
+    <div class="panel"><div class="panel-head"><h2>Additional To-Dos</h2><span class="count" id="count-additional"></span></div><p class="sub">Tasks added via Docket appear here.</p><div class="sep-task-list" id="list-additional"></div></div>
+    <footer class="pg-note">Ticks shared in real time via Supabase</footer>
   </div>
   </div>
 </div>
 
-<!-- WIN TRACKER TAB -->
+<!-- WIN TRACKER -->
 <div class="tab-panel" id="tab-wins">
   <div class="tab-scroll">
   <div class="page-wrap">
@@ -282,10 +253,10 @@ footer.pg-note { margin-top: 18px; color: #414142; font-size: 0.78rem; text-alig
     <h1 class="page-title">Win Tracker</h1>
     <p class="page-lede">Every new client logged here. Switch month to see that period's performance.</p>
     <div class="grad-line"></div>
-
     <div class="month-selector-bar">
       <label>Viewing month</label>
       <select id="month-select" onchange="wtRender()">
+        <option value="2026-08">August 2026</option>
         <option value="2026-09">September 2026</option>
         <option value="2026-10">October 2026</option>
         <option value="2026-11">November 2026</option>
@@ -298,42 +269,27 @@ footer.pg-note { margin-top: 18px; color: #414142; font-size: 0.78rem; text-alig
         <option value="2027-06">June 2027</option>
         <option value="2027-07">July 2027</option>
         <option value="2027-08">August 2027</option>
-        <option value="2027-09">September 2027</option>
       </select>
     </div>
-
     <div class="wt-tiles">
       <div class="wt-tile accent"><div class="wt-label">Clients this month</div><div class="wt-value" id="wt-count">0</div></div>
       <div class="wt-tile money"><div class="wt-label">Banked this month</div><div class="wt-value" id="wt-banked">£0</div></div>
-      <div class="wt-tile money"><div class="wt-label">Monthly target</div><div class="wt-value">£<input class="target-input" id="wt-target-input" type="number" min="0" step="50" value="4000" onchange="saveTarget();wtRender()"></div></div>
+      <div class="wt-tile money"><div class="wt-label">Monthly target</div><div class="wt-value">£<input class="target-input" id="wt-target-input" type="number" min="0" step="50" value="4000" onchange="saveTarget()"></div></div>
       <div class="wt-tile money"><div class="wt-label">Gap to close</div><div class="wt-value" id="wt-gap">£0</div></div>
     </div>
-
     <div class="month-progress-bar"><div class="month-progress-fill" id="wt-progress-fill" style="width:0%"></div></div>
-    <p class="month-insight" id="wt-insight">—</p>
-
+    <p class="month-insight" id="wt-insight">Loading…</p>
     <div class="wt-grid-2">
-      <div class="panel">
-        <h2>This month's sources</h2>
-        <p class="sub">Revenue by source for the selected month.</p>
-        <div id="wt-source-bars"></div>
-        <div class="wt-chips" id="wt-industry-chips" style="display:none"></div>
-      </div>
-      <div class="panel">
-        <h2>Log a new client</h2>
-        <p class="sub">Saved to this browser.</p>
+      <div class="panel"><h2>This month's sources</h2><p class="sub">Revenue by source for the selected month.</p><div id="wt-source-bars"></div><div class="wt-chips" id="wt-industry-chips" style="display:none"></div></div>
+      <div class="panel"><h2>Log a new client</h2><p class="sub">Saved and shared instantly.</p>
         <form class="wt-add" id="wt-add-form">
           <div class="wt-field"><label>Client name</label><input id="wt-name" type="text" placeholder="e.g. Riverside Roofing" required></div>
           <div class="wt-field-row">
-            <div class="wt-field"><label>Industry</label><input id="wt-industry" type="text" list="ind-list" placeholder="e.g. Mortgage adviser" required>
-              <datalist id="ind-list"><option value="Mortgage adviser"><option value="Accountant"><option value="Solicitor"><option value="Will writer"><option value="Coach"><option value="Personal trainer"><option value="Roofer"><option value="Logistics"><option value="Networking group"></datalist>
-            </div>
+            <div class="wt-field"><label>Industry</label><input id="wt-industry" type="text" list="ind-list" placeholder="e.g. Mortgage adviser" required><datalist id="ind-list"><option value="Mortgage adviser"><option value="Accountant"><option value="Solicitor"><option value="Will writer"><option value="Coach"><option value="Personal trainer"><option value="Roofer"><option value="Logistics"><option value="Networking group"></datalist></div>
             <div class="wt-field"><label>Amount (£)</label><input id="wt-amount" type="number" min="0" step="0.01" placeholder="0.00" required></div>
           </div>
           <div class="wt-field-row">
-            <div class="wt-field"><label>Source</label><input id="wt-source" type="text" list="src-list" placeholder="e.g. BNI" required>
-              <datalist id="src-list"><option value="Referral"><option value="BNI"><option value="Networking event"><option value="Cold outreach"><option value="Meta ads"><option value="Facebook / Instagram ads"><option value="Google ads"><option value="LinkedIn"><option value="Website enquiry"><option value="Warm lead"></datalist>
-            </div>
+            <div class="wt-field"><label>Source</label><input id="wt-source" type="text" list="src-list" placeholder="e.g. BNI" required><datalist id="src-list"><option value="Referral"><option value="BNI"><option value="Networking event"><option value="Cold outreach"><option value="Meta ads"><option value="Facebook / Instagram ads"><option value="Google ads"><option value="LinkedIn"><option value="Website enquiry"><option value="Warm lead"></datalist></div>
             <div class="wt-field"><label>Date</label><input id="wt-date" type="date" required></div>
           </div>
           <button class="wt-submit" type="submit">Add client</button>
@@ -341,65 +297,73 @@ footer.pg-note { margin-top: 18px; color: #414142; font-size: 0.78rem; text-alig
         </form>
       </div>
     </div>
-
-    <div class="wt-table-scroll">
-      <table class="wt-log">
-        <thead><tr><th>Date</th><th>Client</th><th>Industry</th><th>Source</th><th>Paid</th><th></th></tr></thead>
-        <tbody id="wt-log-body"><tr><td colspan="6" class="tbl-empty">No clients this month yet.</td></tr></tbody>
-      </table>
-    </div>
-    <footer class="pg-note" style="margin-top:18px">Saved in this browser — private to this device.</footer>
+    <div class="wt-table-scroll"><table class="wt-log"><thead><tr><th>Date</th><th>Client</th><th>Industry</th><th>Source</th><th>Paid</th><th></th></tr></thead><tbody id="wt-log-body"><tr><td colspan="6" class="tbl-empty">Loading…</td></tr></tbody></table></div>
+    <footer class="pg-note" style="margin-top:18px">Shared in real time via Supabase.</footer>
   </div>
   </div>
 </div>
 
-<!-- SOURCE REPORT TAB -->
+<!-- SOURCE REPORT -->
 <div class="tab-panel" id="tab-source">
   <div class="tab-scroll">
   <div class="page-wrap">
-    <div style="display:flex;align-items:baseline;justify-content:space-between;gap:12px;">
-      <span class="eyebrow">hopeitsticks.</span>
-    </div>
+    <span class="eyebrow">hopeitsticks.</span>
     <hr class="page-rule">
     <h1 class="page-title">Source Report</h1>
     <p class="page-lede">Cumulative view of every client logged — which channels are actually working.</p>
     <div class="grad-line"></div>
-
     <div class="source-tiles">
       <div class="wt-tile accent"><div class="wt-label">Total clients</div><div class="wt-value" id="sr-total-clients">0</div></div>
       <div class="wt-tile money"><div class="wt-label">Total revenue</div><div class="wt-value" id="sr-total-rev">£0</div></div>
       <div class="wt-tile accent"><div class="wt-label">Best source</div><div class="wt-value" id="sr-best-source" style="font-size:1rem">—</div></div>
     </div>
-
-    <div class="chart-wrap">
-      <h2>Revenue by source</h2>
-      <p class="sub">All time — every client ever logged.</p>
-      <div class="bar-chart" id="sr-rev-chart"></div>
-    </div>
-
-    <div class="chart-wrap">
-      <h2>Clients by source</h2>
-      <p class="sub">Number of clients from each channel.</p>
-      <div class="bar-chart" id="sr-count-chart"></div>
-    </div>
-
-    <div class="chart-wrap">
-      <h2>Revenue by industry</h2>
-      <p class="sub">Which niches are bringing in the most money.</p>
-      <div class="bar-chart" id="sr-industry-chart"></div>
-    </div>
-
+    <div class="chart-wrap"><h2>Revenue by source</h2><p class="sub">All time — every client ever logged.</p><div class="bar-chart" id="sr-rev-chart"></div></div>
+    <div class="chart-wrap"><h2>Clients by source</h2><p class="sub">Number of clients from each channel.</p><div class="bar-chart" id="sr-count-chart"></div></div>
+    <div class="chart-wrap"><h2>Revenue by industry</h2><p class="sub">Which niches are bringing in the most money.</p><div class="bar-chart" id="sr-industry-chart"></div></div>
     <footer class="pg-note">All figures pulled live from your Win Tracker data.</footer>
   </div>
   </div>
 </div>
 
 <script>
+// ── SUPABASE CONFIG ──
+var SB_URL = 'https://nghwzetqfmeobchmhszp.supabase.co';
+var SB_KEY = 'sb_publishable_OIDjWKqXn2yB7z-aYP3Apg_JIoGIB0R';
+
+function sbHeaders(){
+  return { 'Content-Type':'application/json', 'apikey': SB_KEY, 'Authorization': 'Bearer '+SB_KEY };
+}
+
+function sbGet(table, params){
+  var url = SB_URL+'/rest/v1/'+table+'?'+( params||'select=*' );
+  return fetch(url,{headers:sbHeaders()}).then(function(r){return r.json();});
+}
+
+function sbUpsert(table, data){
+  return fetch(SB_URL+'/rest/v1/'+table,{
+    method:'POST',
+    headers:Object.assign({},sbHeaders(),{'Prefer':'resolution=merge-duplicates'}),
+    body:JSON.stringify(data)
+  });
+}
+
+function sbDelete(table, id){
+  return fetch(SB_URL+'/rest/v1/'+table+'?id=eq.'+encodeURIComponent(id),{
+    method:'DELETE', headers:sbHeaders()
+  });
+}
+
+function setSyncBadge(state, text){
+  var b=document.getElementById('sync-badge');
+  b.textContent=text; b.className='sync-badge'+(state?' '+state:'');
+}
+
 // ── UTILS ──
 function esc(s){ var d=document.createElement('div'); d.textContent=s==null?'':String(s); return d.innerHTML; }
-var gbp = new Intl.NumberFormat('en-GB',{style:'currency',currency:'GBP',maximumFractionDigits:0});
-var gbpDec = new Intl.NumberFormat('en-GB',{style:'currency',currency:'GBP',maximumFractionDigits:2,minimumFractionDigits:0});
+var gbp=new Intl.NumberFormat('en-GB',{style:'currency',currency:'GBP',maximumFractionDigits:0});
+var gbpDec=new Intl.NumberFormat('en-GB',{style:'currency',currency:'GBP',maximumFractionDigits:2,minimumFractionDigits:0});
 function fmtDate(iso){ if(!iso)return'—'; var d=new Date(iso+'T00:00:00'); if(isNaN(d))return iso; return d.toLocaleDateString('en-GB',{day:'numeric',month:'short',year:'numeric'}); }
+function mkId(){ return'c'+Date.now().toString(36)+Math.random().toString(36).slice(2,7); }
 
 // ── TAB SWITCHING ──
 function switchTab(name){
@@ -410,42 +374,152 @@ function switchTab(name){
   if(name==='source') srRender();
 }
 
-// ── DOCKET ──
-var DOCKET_KEY = 'his_docket_v2';
-function loadDocket(){ try{ return JSON.parse(localStorage.getItem(DOCKET_KEY))||[]; }catch(e){ return[]; } }
-function saveDocket(d){ try{ localStorage.setItem(DOCKET_KEY,JSON.stringify(d)); }catch(e){} }
-var docketTasks = loadDocket();
+// ── STATE ──
+var clients=[];
+var targets={};
+var docketTasks=[];
+var sepDoneMap={};
 
+var SEP_PLAN=[
+  {id:'richard-care',   section:'clients', order:1, label:"Richard (SLS Logistics) — check in, make sure he's happy",       note:'£1,600 paid · BNI', flag:null},
+  {id:'richard-launch', section:'clients', order:2, label:'Richard (SLS Logistics) — finalise the build and launch',         note:'This is the big one to get over the line this month', flag:null},
+  {id:'michael-launch', section:'clients', order:4, label:'Michael Shaw (mortgage adviser) — get him launched',              note:'£500 paid (Starter) · BNI', flag:null},
+  {id:'darren-launch',  section:'clients', order:6, label:'Darren Spragg (mortgage adviser) — get him launched',             note:'£500 paid (Starter) · Meta ads', flag:null},
+  {id:'darren-proposal',section:'clients', order:7, label:'Darren Spragg — send the proposal for his will-writing business', note:'Separate business · A to B Framework', flag:'new-rev'},
+  {id:'prev-darren-clarke',    section:'previous',order:1,label:'Check in with Darren Clarke',   note:'Previous client',flag:null},
+  {id:'prev-chrissy-coates',   section:'previous',order:2,label:'Check in with Chrissy Coates',  note:'Previous client',flag:null},
+  {id:'prev-neil-briggs',      section:'previous',order:3,label:'Check in with Neil Briggs',      note:'Previous client',flag:null},
+  {id:'prev-deb-leonard',      section:'previous',order:4,label:'Check in with Deb Leonard',      note:'Previous client',flag:null},
+  {id:'prev-sarah-smith',      section:'previous',order:5,label:'Check in with Sarah Smith',      note:'Previous client',flag:null},
+  {id:'prev-susan-smith',      section:'previous',order:6,label:'Check in with Susan Smith',      note:'Previous client',flag:null},
+  {id:'prev-catherine-turner', section:'previous',order:7,label:'Check in with Catherine Turner', note:'Previous client',flag:null},
+  {id:'prev-jaxson-crawford',  section:'previous',order:8,label:'Check in with Jaxson Crawford',  note:'Previous client',flag:null},
+  {id:'bni-leads-db-retag', section:'bni',order:1,label:'Rethink the big mortgage-leads database — 1 lead from a full pass is a weak return',note:'Decide the new approach before touching it further',flag:null},
+  {id:'bni-trades-pull',    section:'bni',order:2,label:'Pull all the trades from BNI',note:'In progress',flag:'progress'},
+  {id:'bni-trades-contact', section:'bni',order:3,label:'Start contacting trades about the AI Receptionist',note:'"Missed call = lost job" is the fastest-closing pitch',flag:null},
+  {id:'expo-record-webinar',section:'expo',order:1,label:'Record the webinar',note:'Overdue — do this first',flag:'urgent'},
+  {id:'expo-write-deck',    section:'expo',order:2,label:'Write the expo presentation',note:'',flag:null},
+  {id:'expo-practice-deck', section:'expo',order:3,label:'Practice the expo presentation — repeatedly',note:'',flag:null},
+  {id:'expo-merch',         section:'expo',order:4,label:'Sort the merchandise for the expo',note:'',flag:null}
+];
+
+// ── LOAD ALL DATA ──
+function loadAll(){
+  setSyncBadge('syncing','Syncing…');
+  Promise.all([
+    sbGet('hq_win_tracker','select=*&order=date.asc'),
+    sbGet('hq_targets','select=*'),
+    sbGet('hq_docket','select=*&order=created_at.asc'),
+    sbGet('hq_sep_tasks','select=*')
+  ]).then(function(results){
+    clients = Array.isArray(results[0]) ? results[0] : [];
+    var tRows = Array.isArray(results[1]) ? results[1] : [];
+    targets={};
+    tRows.forEach(function(r){ targets[r.month]=r.target; });
+    docketTasks = Array.isArray(results[2]) ? results[2] : [];
+    var sepRows = Array.isArray(results[3]) ? results[3] : [];
+    sepDoneMap={};
+    sepRows.forEach(function(r){ sepDoneMap[r.id]=r.done; });
+
+    // Seed default clients if empty
+    if(clients.length===0){
+      var seed=[
+        {id:'aug-richard',name:'Richard Logistics',industry:'Logistics',amount:1600,source:'BNI',date:'2026-08-04'},
+        {id:'aug-darren', name:'Darren Spragg',    industry:'Mortgage adviser',amount:500,source:'Meta ads',date:'2026-08-04'},
+        {id:'sep-michael',name:'Michael Shaw',     industry:'Mortgage adviser',amount:500,source:'BNI',date:'2026-09-04'}
+      ];
+      sbUpsert('hq_win_tracker',seed).then(function(){
+        clients=seed; wtRender(); srRender();
+      });
+    }
+
+    setSyncBadge('','Live');
+    setCurrentMonth();
+    wtRender();
+    sepRender();
+    renderAdditional();
+    updateOverallProgress();
+    srRender();
+  }).catch(function(e){
+    setSyncBadge('error','Offline');
+    console.error(e);
+  });
+}
+
+// ── SEPTEMBER PLAN ──
+document.getElementById('sep-today').textContent=new Date().toLocaleDateString('en-GB',{weekday:'long',day:'numeric',month:'long',year:'numeric'});
+
+function flagHtml(f){ if(!f)return''; var t=f==='urgent'?'Urgent':f==='progress'?'In progress':f==='new-rev'?'New revenue':f; return'<span class="sep-flag '+esc(f)+'">'+esc(t)+'</span>'; }
+
+function sepRender(){
+  var sections={clients:'list-clients',previous:'list-previous',bni:'list-bni',expo:'list-expo'};
+  var counts={clients:'count-clients',previous:'count-previous',bni:'count-bni',expo:'count-expo'};
+  Object.keys(sections).forEach(function(key){
+    var el=document.getElementById(sections[key]);
+    var countEl=document.getElementById(counts[key]);
+    var rows=SEP_PLAN.filter(function(t){return t.section===key;}).sort(function(a,b){return(a.order||0)-(b.order||0);});
+    var undone=rows.filter(function(r){return !sepDoneMap[r.id];});
+    var done=rows.filter(function(r){return !!sepDoneMap[r.id];});
+    var sorted=undone.concat(done);
+    if(!sorted.length){el.innerHTML='<div class="empty-note">Nothing here yet.</div>';countEl.textContent='';return;}
+    countEl.textContent=done.length+' / '+sorted.length+' done';
+    el.innerHTML=sorted.map(function(t){
+      var isDone=!!sepDoneMap[t.id];
+      return'<div class="sep-task-row'+(isDone?' done':'')+'" data-id="'+esc(t.id)+'">'+
+        '<input type="checkbox"'+(isDone?' checked':'')+'>'+
+        '<div class="sep-task-body"><div class="label">'+esc(t.label)+flagHtml(t.flag)+'</div>'+(t.note?'<div class="note">'+esc(t.note)+'</div>':'')+
+        '</div></div>';
+    }).join('');
+  });
+  updateOverallProgress();
+}
+
+document.getElementById('tab-sep').addEventListener('click',function(e){
+  var row=e.target.closest('.sep-task-row'); if(!row)return;
+  var id=row.getAttribute('data-id');
+  var newDone=(e.target.tagName==='INPUT')?e.target.checked:!sepDoneMap[id];
+  sepDoneMap[id]=newDone;
+  setSyncBadge('syncing','Saving…');
+  sbUpsert('hq_sep_tasks',{id:id,done:newDone}).then(function(){
+    setSyncBadge('','Live');
+  });
+  sepRender();
+});
+
+// ── DOCKET ──
 function addToPlan(){
   var name=document.getElementById('d-task').value.trim();
   var detail=document.getElementById('d-detail').value.trim();
   var action=document.getElementById('d-action').value.trim();
   var p=document.getElementById('d-priority').value;
-  if(!name){ document.getElementById('d-task').focus(); return; }
-  docketTasks.push({id:'dt_'+Date.now(),n:name,d:detail||'',a:action||'',p:p,done:false});
-  saveDocket(docketTasks);
+  if(!name){document.getElementById('d-task').focus();return;}
+  var task={id:'dt_'+Date.now(),n:name,d:detail||'',a:action||'',p:p,done:false};
+  setSyncBadge('syncing','Saving…');
+  sbUpsert('hq_docket',task).then(function(){
+    docketTasks.push(task);
+    setSyncBadge('','Live');
+    renderAdditional(); updateOverallProgress();
+  });
   document.getElementById('d-task').value='';
   document.getElementById('d-detail').value='';
   document.getElementById('d-action').value='';
   document.getElementById('d-priority').value='high';
   var flash=document.getElementById('added-flash');
-  flash.classList.add('show'); setTimeout(function(){ flash.classList.remove('show'); },2200);
-  renderAdditional(); updateOverallProgress();
+  flash.classList.add('show'); setTimeout(function(){flash.classList.remove('show');},2200);
 }
-document.getElementById('d-task').addEventListener('keydown',function(e){ if(e.key==='Enter'&&!e.shiftKey){ e.preventDefault(); addToPlan(); } });
+document.getElementById('d-task').addEventListener('keydown',function(e){if(e.key==='Enter'&&!e.shiftKey){e.preventDefault();addToPlan();}});
 
 function renderAdditional(){
   var el=document.getElementById('list-additional');
   var countEl=document.getElementById('count-additional');
-  if(!docketTasks.length){ el.innerHTML='<div class="empty-note">Nothing added yet — use Docket to add tasks here.</div>'; countEl.textContent=''; return; }
+  if(!docketTasks.length){el.innerHTML='<div class="empty-note">Nothing added yet — use Docket to add tasks here.</div>';countEl.textContent='';return;}
   var po={urgent:0,high:1,medium:2,low:3};
-  var undone=docketTasks.filter(function(t){return !t.done;}).sort(function(a,b){return (po[a.p]||1)-(po[b.p]||1);});
+  var undone=docketTasks.filter(function(t){return !t.done;}).sort(function(a,b){return(po[a.p]||1)-(po[b.p]||1);});
   var done=docketTasks.filter(function(t){return t.done;});
   var all=undone.concat(done);
-  var dc=done.length;
-  countEl.textContent=dc+' / '+all.length+' done';
+  countEl.textContent=done.length+' / '+all.length+' done';
   el.innerHTML=all.map(function(t){
-    return '<div class="docket-task-card'+(t.done?' done':'')+'" data-did="'+esc(t.id)+'">'+
+    return'<div class="docket-task-card'+(t.done?' done':'')+'" data-did="'+esc(t.id)+'">'+
       '<input type="checkbox"'+(t.done?' checked':'')+' onclick="toggleDocket(\''+t.id+'\',this)">'+
       '<div><div class="dtask-name">'+esc(t.n)+'</div>'+(t.d?'<div class="dtask-detail">'+esc(t.d)+'</div>':'')+(t.a?'<div class="dtask-action">'+esc(t.a)+'</div>':'')+'</div>'+
       '<span class="dtask-priority '+esc(t.p)+'">'+t.p.charAt(0).toUpperCase()+t.p.slice(1)+'</span>'+
@@ -455,112 +529,33 @@ function renderAdditional(){
 
 function toggleDocket(id,cb){
   var task=docketTasks.find(function(t){return t.id===id;});
-  if(task){ task.done=cb.checked; saveDocket(docketTasks); renderAdditional(); updateOverallProgress(); }
+  if(!task)return;
+  task.done=cb.checked;
+  setSyncBadge('syncing','Saving…');
+  sbUpsert('hq_docket',task).then(function(){setSyncBadge('','Live');});
+  renderAdditional(); updateOverallProgress();
 }
 
 // ── OVERALL PROGRESS ──
 function updateOverallProgress(){
-  var sepState=loadSepState();
-  var sepTasks=sepState?sepState.tasks:[];
-  var total=sepTasks.length+docketTasks.length;
-  var done=sepTasks.filter(function(t){return t.done;}).length+docketTasks.filter(function(t){return t.done;}).length;
-  var pct=total?Math.round(done/total*100):0;
-  document.getElementById('overall-done').textContent=done;
-  document.getElementById('overall-total').textContent=total;
+  var sepTotal=SEP_PLAN.length+docketTasks.length;
+  var sepDone=SEP_PLAN.filter(function(t){return !!sepDoneMap[t.id];}).length+docketTasks.filter(function(t){return t.done;}).length;
+  var pct=sepTotal?Math.round(sepDone/sepTotal*100):0;
+  document.getElementById('overall-done').textContent=sepDone;
+  document.getElementById('overall-total').textContent=sepTotal;
   document.getElementById('overall-bar-fill').style.width=pct+'%';
 }
 
-// ── SEPTEMBER PLAN ──
-var SEP_KEY='hopeitsticks-september-plan-v2';
-var PLAN_DEFAULTS={
-  meta:{},
-  tasks:[
-    {id:'richard-care',   section:'clients', order:1, label:"Richard (SLS Logistics) — check in, make sure he's happy",       note:'£1,600 paid · BNI', done:false},
-    {id:'richard-launch', section:'clients', order:2, label:'Richard (SLS Logistics) — finalise the build and launch',         note:'This is the big one to get over the line this month', done:false},
-    {id:'michael-launch', section:'clients', order:4, label:'Michael Shaw (mortgage adviser) — get him launched',              note:'£500 paid (Starter) · BNI', done:false},
-    {id:'darren-launch',  section:'clients', order:6, label:'Darren Spragg (mortgage adviser) — get him launched',             note:'£500 paid (Starter) · Meta ads', done:false},
-    {id:'darren-proposal',section:'clients', order:7, label:'Darren Spragg — send the proposal for his will-writing business', note:'Separate business · A to B Framework', flag:'new-rev', done:false},
-    {id:'prev-darren-clarke',    section:'previous',order:1,label:'Check in with Darren Clarke',   note:'Previous client',done:false},
-    {id:'prev-chrissy-coates',   section:'previous',order:2,label:'Check in with Chrissy Coates',  note:'Previous client',done:false},
-    {id:'prev-neil-briggs',      section:'previous',order:3,label:'Check in with Neil Briggs',      note:'Previous client',done:false},
-    {id:'prev-deb-leonard',      section:'previous',order:4,label:'Check in with Deb Leonard',      note:'Previous client',done:false},
-    {id:'prev-sarah-smith',      section:'previous',order:5,label:'Check in with Sarah Smith',      note:'Previous client',done:false},
-    {id:'prev-susan-smith',      section:'previous',order:6,label:'Check in with Susan Smith',      note:'Previous client',done:false},
-    {id:'prev-catherine-turner', section:'previous',order:7,label:'Check in with Catherine Turner', note:'Previous client',done:false},
-    {id:'prev-jaxson-crawford',  section:'previous',order:8,label:'Check in with Jaxson Crawford',  note:'Previous client',done:false},
-    {id:'bni-leads-db-retag', section:'bni',order:1,label:'Rethink the big mortgage-leads database — 1 lead from a full pass is a weak return',note:'Decide the new approach before touching it further',done:false},
-    {id:'bni-trades-pull',    section:'bni',order:2,label:'Pull all the trades from BNI',note:'In progress',flag:'progress',done:false},
-    {id:'bni-trades-contact', section:'bni',order:3,label:'Start contacting trades about the AI Receptionist',note:'"Missed call = lost job" is the fastest-closing pitch on the niche list',done:false},
-    {id:'expo-record-webinar',section:'expo',order:1,label:'Record the webinar',note:'Overdue — do this first',flag:'urgent',done:false},
-    {id:'expo-write-deck',    section:'expo',order:2,label:'Write the expo presentation',note:'',done:false},
-    {id:'expo-practice-deck', section:'expo',order:3,label:'Practice the expo presentation — repeatedly',note:'',done:false},
-    {id:'expo-merch',         section:'expo',order:4,label:'Sort the merchandise for the expo',note:'',done:false}
-  ]
-};
-
-function loadSepState(){ try{ var r=localStorage.getItem(SEP_KEY); if(r)return JSON.parse(r); }catch(e){} return JSON.parse(JSON.stringify(PLAN_DEFAULTS)); }
-function saveSepState(s){ try{ localStorage.setItem(SEP_KEY,JSON.stringify(s)); }catch(e){} }
-
-document.getElementById('sep-today').textContent=new Date().toLocaleDateString('en-GB',{weekday:'long',day:'numeric',month:'long',year:'numeric'});
-
-var sepState=loadSepState();
-
-var sepSections={clients:'list-clients',previous:'list-previous',bni:'list-bni',expo:'list-expo'};
-var sepCounts={clients:'count-clients',previous:'count-previous',bni:'count-bni',expo:'count-expo'};
-
-function flagHtml(f){ if(!f)return''; var t=f==='urgent'?'Urgent':f==='progress'?'In progress':f==='new-rev'?'New revenue':f; return'<span class="sep-flag '+esc(f)+'">'+esc(t)+'</span>'; }
-
-function sepRender(){
-  Object.keys(sepSections).forEach(function(key){
-    var el=document.getElementById(sepSections[key]);
-    var countEl=document.getElementById(sepCounts[key]);
-    var rows=sepState.tasks.filter(function(t){return t.section===key;}).sort(function(a,b){return(a.order||0)-(b.order||0);});
-    // Sort: undone first, done at bottom
-    var undone=rows.filter(function(r){return !r.done;});
-    var done=rows.filter(function(r){return r.done;});
-    var sorted=undone.concat(done);
-    if(!sorted.length){ el.innerHTML='<div class="empty-note">Nothing here yet.</div>'; countEl.textContent=''; return; }
-    var dc=done.length;
-    countEl.textContent=dc+' / '+sorted.length+' done';
-    el.innerHTML=sorted.map(function(t){
-      return'<div class="sep-task-row'+(t.done?' done':'')+'" data-id="'+esc(t.id)+'">'+
-        '<input type="checkbox"'+(t.done?' checked':'')+'>'+
-        '<div class="sep-task-body"><div class="label">'+esc(t.label)+flagHtml(t.flag)+'</div>'+(t.note?'<div class="note">'+esc(t.note)+'</div>':'')+
-        '</div></div>';
-    }).join('');
-  });
-  renderAdditional();
-  updateOverallProgress();
-}
-
-document.getElementById('tab-sep').addEventListener('click',function(e){
-  var row=e.target.closest('.sep-task-row'); if(!row)return;
-  var id=row.getAttribute('data-id');
-  var task=sepState.tasks.find(function(t){return t.id===id;}); if(!task)return;
-  task.done=(e.target.tagName==='INPUT')?e.target.checked:!task.done;
-  saveSepState(sepState); sepRender();
-});
-
-sepRender();
-
 // ── WIN TRACKER ──
-var WT_KEY='hopeitsticks_win_tracker_v2';
-var WT_TARGETS_KEY='hopeitsticks_wt_targets_v1';
+document.getElementById('wt-today').textContent=new Date().toLocaleDateString('en-GB',{weekday:'long',day:'numeric',month:'long',year:'numeric'});
+document.getElementById('wt-date').value=new Date().toISOString().slice(0,10);
 
-var SEED=[
-  {id:'aug-richard', name:'Richard Logistics', industry:'Logistics',   amount:1600, source:'BNI',      date:'2026-08-04'},
-  {id:'aug-darren',  name:'Darren Spragg',     industry:'Mortgage adviser', amount:500, source:'Meta ads', date:'2026-08-04'},
-  {id:'sep-michael', name:'Michael Shaw',       industry:'Mortgage adviser', amount:500, source:'BNI',      date:'2026-09-04'}
-];
-
-function loadClients(){ try{ var r=localStorage.getItem(WT_KEY); if(r===null){saveClients(SEED);return SEED.slice();} var p=JSON.parse(r); return Array.isArray(p)?p:[]; }catch(e){return SEED.slice();} }
-function saveClients(l){ try{ localStorage.setItem(WT_KEY,JSON.stringify(l)); }catch(e){} }
-function loadTargets(){ try{ return JSON.parse(localStorage.getItem(WT_TARGETS_KEY))||{}; }catch(e){return{};} }
-function saveTargets(t){ try{ localStorage.setItem(WT_TARGETS_KEY,JSON.stringify(t)); }catch(e){} }
-function mkId(){ return'c'+Date.now().toString(36)+Math.random().toString(36).slice(2,7); }
-
-var clients=loadClients();
-var targets=loadTargets();
+function setCurrentMonth(){
+  var now=new Date();
+  var key=now.getFullYear()+'-'+String(now.getMonth()+1).padStart(2,'0');
+  var sel=document.getElementById('month-select');
+  for(var i=0;i<sel.options.length;i++){if(sel.options[i].value===key){sel.selectedIndex=i;break;}}
+}
 
 function getCurrentMonth(){ return document.getElementById('month-select').value; }
 function getTarget(month){ return targets[month]!==undefined?targets[month]:4000; }
@@ -568,69 +563,42 @@ function getTarget(month){ return targets[month]!==undefined?targets[month]:4000
 function saveTarget(){
   var month=getCurrentMonth();
   var val=Math.max(0,Number(document.getElementById('wt-target-input').value)||0);
-  targets[month]=val; saveTargets(targets);
+  targets[month]=val;
+  setSyncBadge('syncing','Saving…');
+  sbUpsert('hq_targets',{month:month,target:val}).then(function(){setSyncBadge('','Live');});
 }
 
 function wtRender(){
   var month=getCurrentMonth();
   var target=getTarget(month);
   document.getElementById('wt-target-input').value=target;
-
-  var monthClients=clients.filter(function(c){ return c.date&&c.date.startsWith(month); });
-  var banked=monthClients.reduce(function(s,c){return s+(Number(c.amount)||0);},0);
+  var mc=clients.filter(function(c){return c.date&&c.date.startsWith(month);});
+  var banked=mc.reduce(function(s,c){return s+(Number(c.amount)||0);},0);
   var gap=Math.max(0,target-banked);
   var pct=target>0?Math.min(100,Math.round(banked/target*100)):0;
-
-  document.getElementById('wt-count').textContent=monthClients.length;
+  document.getElementById('wt-count').textContent=mc.length;
   document.getElementById('wt-banked').textContent=gbp.format(banked);
   document.getElementById('wt-gap').textContent=gap===0?'Hit it!':gbp.format(gap);
   document.getElementById('wt-progress-fill').style.width=pct+'%';
+  var mName=document.getElementById('month-select').options[document.getElementById('month-select').selectedIndex].text;
+  document.getElementById('wt-insight').textContent=mc.length===0?'No clients logged for '+mName+' yet.':gbp.format(banked)+' banked from '+mc.length+' client'+(mc.length>1?'s':'')+' in '+mName+'. '+(gap>0?gbp.format(gap)+' to go.':'Target hit!');
 
-  var monthName=document.getElementById('month-select').options[document.getElementById('month-select').selectedIndex].text;
-  var insight = monthClients.length===0
-    ? 'No clients logged for '+monthName+' yet.'
-    : gbp.format(banked)+' banked from '+monthClients.length+' client'+(monthClients.length>1?'s':'')+' in '+monthName+'. '+
-      (gap>0?gbp.format(gap)+' to go to hit the target.':'Target hit!');
-  document.getElementById('wt-insight').textContent=insight;
+  var byS={};mc.forEach(function(c){var k=(c.source||'Unknown').trim();if(!byS[k])byS[k]={count:0,total:0};byS[k].count++;byS[k].total+=Number(c.amount)||0;});
+  var sl=Object.keys(byS).map(function(k){return{name:k,count:byS[k].count,total:byS[k].total};}).sort(function(a,b){return b.total-a.total;});
+  var bEl=document.getElementById('wt-source-bars');
+  if(!sl.length){bEl.innerHTML='<div class="empty-note">No clients this month yet.</div>';}
+  else{var mx=sl[0].total||1;bEl.innerHTML=sl.map(function(s){var p=Math.max(4,Math.round((s.total/mx)*100));return'<div class="wt-bar-row"><div class="wt-name">'+esc(s.name)+'</div><div class="wt-bar-track"><div class="wt-bar-fill" style="width:'+p+'%"></div></div><div class="wt-amt">'+gbp.format(s.total)+' · '+s.count+'</div></div>';}).join('');}
 
-  // Source bars for month
-  var bySource={};
-  monthClients.forEach(function(c){ var k=(c.source||'Unknown').trim(); if(!bySource[k])bySource[k]={count:0,total:0}; bySource[k].count++; bySource[k].total+=Number(c.amount)||0; });
-  var srcList=Object.keys(bySource).map(function(k){return{name:k,count:bySource[k].count,total:bySource[k].total};}).sort(function(a,b){return b.total-a.total;});
-  var barsEl=document.getElementById('wt-source-bars');
-  if(!srcList.length){ barsEl.innerHTML='<div class="empty-note">No clients this month yet.</div>'; }
-  else{ var mx=srcList[0].total||1; barsEl.innerHTML=srcList.map(function(s){ var p=Math.max(4,Math.round((s.total/mx)*100)); return'<div class="wt-bar-row"><div class="wt-name">'+esc(s.name)+'</div><div class="wt-bar-track"><div class="wt-bar-fill" style="width:'+p+'%"></div></div><div class="wt-amt">'+gbp.format(s.total)+' · '+s.count+'</div></div>'; }).join(''); }
-
-  // Industry chips for month
-  var byInd={};
-  monthClients.forEach(function(c){ var k=(c.industry||'Unknown').trim(); byInd[k]=(byInd[k]||0)+1; });
-  var il=Object.keys(byInd).sort(function(a,b){return byInd[b]-byInd[a];});
+  var byI={};mc.forEach(function(c){var k=(c.industry||'Unknown').trim();byI[k]=(byI[k]||0)+1;});
+  var il=Object.keys(byI).sort(function(a,b){return byI[b]-byI[a];});
   var ce=document.getElementById('wt-industry-chips');
-  if(il.length){ ce.style.display='flex'; ce.innerHTML=il.map(function(n){return'<span class="wt-chip">'+esc(n)+' <b>'+byInd[n]+'</b></span>';}).join(''); } else { ce.style.display='none'; }
+  if(il.length){ce.style.display='flex';ce.innerHTML=il.map(function(n){return'<span class="wt-chip">'+esc(n)+' <b>'+byI[n]+'</b></span>';}).join('');}else{ce.style.display='none';}
 
-  // Table — show all clients this month
   var body=document.getElementById('wt-log-body');
-  if(!monthClients.length){ body.innerHTML='<tr><td colspan="6" class="tbl-empty">No clients logged for this month yet.</td></tr>'; return; }
-  var sorted=monthClients.slice().sort(function(a,b){return(a.date||'')<(b.date||'')?1:-1;});
-  body.innerHTML=sorted.map(function(r){
-    return'<tr><td class="td-date">'+fmtDate(r.date)+'</td><td class="td-name">'+esc(r.name)+'</td><td><span class="wt-tag">'+esc(r.industry)+'</span></td><td>'+esc(r.source)+'</td><td class="td-amount">'+gbpDec.format(Number(r.amount)||0)+'</td><td><button class="del-btn" data-id="'+esc(r.id)+'">×</button></td></tr>';
-  }).join('');
-
-  srRender();
+  if(!mc.length){body.innerHTML='<tr><td colspan="6" class="tbl-empty">No clients logged for this month yet.</td></tr>';return;}
+  var sorted=mc.slice().sort(function(a,b){return(a.date||'')<(b.date||'')?1:-1;});
+  body.innerHTML=sorted.map(function(r){return'<tr><td class="td-date">'+fmtDate(r.date)+'</td><td class="td-name">'+esc(r.name)+'</td><td><span class="wt-tag">'+esc(r.industry)+'</span></td><td>'+esc(r.source)+'</td><td class="td-amount">'+gbpDec.format(Number(r.amount)||0)+'</td><td><button class="del-btn" data-id="'+esc(r.id)+'">×</button></td></tr>';}).join('');
 }
-
-document.getElementById('wt-today').textContent=new Date().toLocaleDateString('en-GB',{weekday:'long',day:'numeric',month:'long',year:'numeric'});
-document.getElementById('wt-date').value=new Date().toISOString().slice(0,10);
-
-// Set month-select to current month
-(function(){
-  var now=new Date();
-  var key=now.getFullYear()+'-'+String(now.getMonth()+1).padStart(2,'0');
-  var sel=document.getElementById('month-select');
-  for(var i=0;i<sel.options.length;i++){ if(sel.options[i].value===key){sel.selectedIndex=i;break;} }
-})();
-
-wtRender();
 
 document.getElementById('wt-add-form').addEventListener('submit',function(e){
   e.preventDefault();
@@ -640,9 +608,12 @@ document.getElementById('wt-add-form').addEventListener('submit',function(e){
   var source=document.getElementById('wt-source').value.trim();
   var date=document.getElementById('wt-date').value;
   var msg=document.getElementById('wt-form-msg');
-  if(!name||!industry||!source||!date||isNaN(amount)||amount<0){ msg.textContent='Fill in every field.'; msg.className='wt-form-msg err'; return; }
-  clients.push({id:mkId(),name:name,industry:industry,amount:amount,source:source,date:date});
-  saveClients(clients); wtRender();
+  if(!name||!industry||!source||!date||isNaN(amount)||amount<0){msg.textContent='Fill in every field.';msg.className='wt-form-msg err';return;}
+  var client={id:mkId(),name:name,industry:industry,amount:amount,source:source,date:date};
+  setSyncBadge('syncing','Saving…');
+  sbUpsert('hq_win_tracker',client).then(function(){
+    clients.push(client); wtRender(); srRender(); setSyncBadge('','Live');
+  });
   e.target.reset(); document.getElementById('wt-date').value=new Date().toISOString().slice(0,10);
   msg.textContent='Added.'; msg.className='wt-form-msg ok'; setTimeout(function(){msg.textContent='';},2500);
 });
@@ -650,43 +621,32 @@ document.getElementById('wt-add-form').addEventListener('submit',function(e){
 document.getElementById('wt-log-body').addEventListener('click',function(e){
   var btn=e.target.closest('.del-btn'); if(!btn)return;
   var id=btn.getAttribute('data-id');
-  if(!btn.classList.contains('confirm')){ btn.classList.add('confirm'); btn.textContent='Sure?'; setTimeout(function(){btn.classList.remove('confirm');btn.textContent='×';},3000); return; }
-  clients=clients.filter(function(c){return c.id!==id;}); saveClients(clients); wtRender();
+  if(!btn.classList.contains('confirm')){btn.classList.add('confirm');btn.textContent='Sure?';setTimeout(function(){btn.classList.remove('confirm');btn.textContent='×';},3000);return;}
+  setSyncBadge('syncing','Saving…');
+  sbDelete('hq_win_tracker',id).then(function(){
+    clients=clients.filter(function(c){return c.id!==id;}); wtRender(); srRender(); setSyncBadge('','Live');
+  });
 });
 
 // ── SOURCE REPORT ──
 function srRender(){
   var total=clients.length;
   var totalRev=clients.reduce(function(s,c){return s+(Number(c.amount)||0);},0);
-
-  var bySource={};
-  clients.forEach(function(c){ var k=(c.source||'Unknown').trim(); if(!bySource[k])bySource[k]={count:0,total:0}; bySource[k].count++; bySource[k].total+=Number(c.amount)||0; });
-  var srcByRev=Object.keys(bySource).map(function(k){return{name:k,count:bySource[k].count,total:bySource[k].total};}).sort(function(a,b){return b.total-a.total;});
-
-  var byInd={};
-  clients.forEach(function(c){ var k=(c.industry||'Unknown').trim(); if(!byInd[k])byInd[k]={count:0,total:0}; byInd[k].count++; byInd[k].total+=Number(c.amount)||0; });
-  var indByRev=Object.keys(byInd).map(function(k){return{name:k,count:byInd[k].count,total:byInd[k].total};}).sort(function(a,b){return b.total-a.total;});
-
+  var byS={};clients.forEach(function(c){var k=(c.source||'Unknown').trim();if(!byS[k])byS[k]={count:0,total:0};byS[k].count++;byS[k].total+=Number(c.amount)||0;});
+  var srcByRev=Object.keys(byS).map(function(k){return{name:k,count:byS[k].count,total:byS[k].total};}).sort(function(a,b){return b.total-a.total;});
+  var byI={};clients.forEach(function(c){var k=(c.industry||'Unknown').trim();if(!byI[k])byI[k]={count:0,total:0};byI[k].count++;byI[k].total+=Number(c.amount)||0;});
+  var indByRev=Object.keys(byI).map(function(k){return{name:k,count:byI[k].count,total:byI[k].total};}).sort(function(a,b){return b.total-a.total;});
   document.getElementById('sr-total-clients').textContent=total;
   document.getElementById('sr-total-rev').textContent=gbp.format(totalRev);
   document.getElementById('sr-best-source').textContent=srcByRev.length?srcByRev[0].name:'—';
-
-  function renderBarChart(elId, rows, valueKey, fmt){
-    var el=document.getElementById(elId);
-    if(!rows.length){ el.innerHTML='<div class="empty-note">No data yet.</div>'; return; }
-    var mx=rows[0][valueKey]||1;
-    el.innerHTML=rows.map(function(r){
-      var pct=Math.max(3,Math.round((r[valueKey]/mx)*100));
-      return'<div class="bc-row"><div class="bc-label" title="'+esc(r.name)+'">'+esc(r.name)+'</div><div class="bc-track"><div class="bc-fill" style="width:'+pct+'%"></div></div><div class="bc-val">'+fmt(r[valueKey])+'</div></div>';
-    }).join('');
-  }
-
-  renderBarChart('sr-rev-chart',   srcByRev,  'total', function(v){return gbp.format(v);});
-  renderBarChart('sr-count-chart', srcByRev.slice().sort(function(a,b){return b.count-a.count;}), 'count', function(v){return v+' client'+(v!==1?'s':'');});
-  renderBarChart('sr-industry-chart', indByRev, 'total', function(v){return gbp.format(v);});
+  function bc(elId,rows,vk,fmt){var el=document.getElementById(elId);if(!rows.length){el.innerHTML='<div class="empty-note">No data yet.</div>';return;}var mx=rows[0][vk]||1;el.innerHTML=rows.map(function(r){var p=Math.max(3,Math.round((r[vk]/mx)*100));return'<div class="bc-row"><div class="bc-label" title="'+esc(r.name)+'">'+esc(r.name)+'</div><div class="bc-track"><div class="bc-fill" style="width:'+p+'%"></div></div><div class="bc-val">'+fmt(r[vk])+'</div></div>';}).join('');}
+  bc('sr-rev-chart',srcByRev,'total',function(v){return gbp.format(v);});
+  bc('sr-count-chart',srcByRev.slice().sort(function(a,b){return b.count-a.count;}),'count',function(v){return v+' client'+(v!==1?'s':'');});
+  bc('sr-industry-chart',indByRev,'total',function(v){return gbp.format(v);});
 }
 
-srRender();
+// ── INIT ──
+loadAll();
 </script>
 </body>
 </html>
