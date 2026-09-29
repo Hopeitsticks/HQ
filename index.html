@@ -449,17 +449,11 @@ function renderTodo(){
   ['high','medium','low'].forEach(function(p){
     var el=document.getElementById('list-'+p);
     var countEl=document.getElementById('count-'+p);
-    var rows=tasks.filter(function(t){return t.p===p;});
-    var undone=rows.filter(function(t){return !t.done;});
-    var doneRows=rows.filter(function(t){return t.done;});
-    var all=undone.concat(doneRows);
+    var undone=tasks.filter(function(t){return t.p===p && !t.done;});
     countEl.textContent=undone.length+' remaining';
-    if(!all.length){el.innerHTML='<div class="empty-note">No '+p+' priority tasks yet. Add one via Docket.</div>';return;}
-    el.innerHTML=all.map(function(t){
-      return'<div class="task-row'+(t.done?' done-row':'')+'" data-id="'+esc(t.id)+'">'+
-        '<input type="checkbox"'+(t.done?' checked':'')+' onchange="toggleTask(\''+t.id+'\',this)">'+
-        '<div><div class="task-label">'+esc(t.n)+'</div>'+(t.d?'<div class="task-detail">'+esc(t.d)+'</div>':'')+(t.a?'<div class="task-action-text">'+esc(t.a)+'</div>':'')+
-        '</div></div>';
+    if(!undone.length){el.innerHTML='<div class="empty-note">No '+p+' priority tasks yet. Add one via Docket.</div>';return;}
+    el.innerHTML=undone.map(function(t){
+      return'<div class="task-row" data-id="'+esc(t.id)+'">'+'<input type="checkbox" onchange="toggleTask(\''+t.id+'\',this)">'+'<div><div class="task-label">'+esc(t.n)+'</div>'+(t.d?'<div class="task-detail">'+esc(t.d)+'</div>':'')+(t.a?'<div class="task-action-text">'+esc(t.a)+'</div>':'')+'</div></div>';
     }).join('');
   });
 }
