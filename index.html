@@ -356,7 +356,7 @@ table.wt-log td.td-date { color: #414142; font-size: 0.8rem; }
 <script>
 // ── SUPABASE ──
 var SB_URL = 'https://nghwzetqfmeobchmhszp.supabase.co';
-var SB_KEY = 'sb_publishable_OIDjWKqXn2yB7z-aYP3Apg_JIoGIB0R';
+var SB_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im5naHd6ZXRxZm1lb2JjaG1oc3pwIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODk3NDIwMzQsImV4cCI6MjEwNTMxODAzNH0.Gvdtw8iFhgLRop2_3x25IfL0NRWkJMXPOsd47uVDnv0';
 function sbH(){ return {'Content-Type':'application/json','apikey':SB_KEY,'Authorization':'Bearer '+SB_KEY}; }
 function sbGet(t,p){ return fetch(SB_URL+'/rest/v1/'+t+'?'+(p||'select=*'),{headers:sbH()}).then(function(r){return r.json();}); }
 function sbUpsert(t,d){ return fetch(SB_URL+'/rest/v1/'+t,{method:'POST',headers:Object.assign({},sbH(),{'Prefer':'resolution=merge-duplicates'}),body:JSON.stringify(d)}); }
