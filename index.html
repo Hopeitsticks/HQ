@@ -425,14 +425,37 @@ function addTask(){
   if(!name){ document.getElementById('d-task').focus(); return; }
   var task={id:mkId(),n:name,d:detail||'',a:action||'',p:p,done:false,completed_at:null,created_at:new Date().toISOString()};
   setSB('syncing','Saving…');
-  sbUpsert('hq_docket',task).then(function(){
-    tasks.push(task); setSB('','Live'); renderTodo();
+  sbUpsert('hq_docket',task).then(function(response){
+    if(response.ok){
+      tasks.push(task);
+      setSB('','Live');
+      renderTodo();
+      var f=document.getElementById('added-flash');
+      f.textContent='Saved to cloud ✓';
+      f.classList.add('show');
+      setTimeout(function(){f.classList.remove('show');},2500);
+    } else {
+      response.text().then(function(txt){
+        setSB('error','Save failed');
+        var f=document.getElementById('added-flash');
+        f.textContent='Error: '+txt;
+        f.style.color='#c4472e';
+        f.classList.add('show');
+        setTimeout(function(){f.classList.remove('show');f.style.color='';},5000);
+      });
+    }
+  }).catch(function(err){
+    setSB('error','Offline');
+    var f=document.getElementById('added-flash');
+    f.textContent='Network error — not saved';
+    f.style.color='#c4472e';
+    f.classList.add('show');
+    setTimeout(function(){f.classList.remove('show');f.style.color='';},5000);
   });
   document.getElementById('d-task').value='';
   document.getElementById('d-detail').value='';
   document.getElementById('d-action').value='';
   document.getElementById('d-priority').value='medium';
-  var f=document.getElementById('added-flash'); f.classList.add('show'); setTimeout(function(){f.classList.remove('show');},2200);
 }
 document.getElementById('d-task').addEventListener('keydown',function(e){ if(e.key==='Enter'&&!e.shiftKey){e.preventDefault();addTask();} });
 
